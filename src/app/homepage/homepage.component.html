@@ -21,6 +21,7 @@
       <div class='card'>
         <div class='card-header text-center'>
           <h3>Login</h3>
+          <span class='error_msg'>{{errorMessage}}</span>
         </div>
         <div class='card-body'>
           <form name='loginform' #loginForm='ngForm' (submit)='onSubmit(loginForm)'>
