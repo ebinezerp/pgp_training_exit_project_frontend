@@ -1,0 +1,49 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-2 ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/register']" routerLinkActive="router-link-active" >Registration</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<section class='content container mt-5'>
+  <div class='row'>
+    <div class='col-12 col-md-5 col-sm-7 offset-md-4 offset-sm-3'>
+      <div class='card'>
+        <div class='card-header text-center'>
+          <h3>Login</h3>
+        </div>
+        <div class='card-body'>
+          <form name='loginform' #loginForm='ngForm' (submit)='onSubmit(loginForm)'>
+            <div class="form-group">
+              <label for="username">Username or Email</label>
+              <input type="text" name="username" id="username" #usernameField='ngModel' required [(ngModel)]="username"
+                class="form-control" placeholder="Username or Email" aria-describedby="helpId">
+              <span *ngIf="usernameField.invalid && (usernameField.dirty || usernameField.touched)" class='error_msg'>
+                Enter username or email
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" #passwordField='ngModel' required id="password"
+                [(ngModel)]="password" class="form-control" placeholder="Password" aria-describedby="helpId">
+              <span *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class='error_msg'>
+                Enter username or email
+              </span>
+            </div>
+            <button type='submit' [disabled]='!loginForm.valid' class='btn btn-primary btn-block'>Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
