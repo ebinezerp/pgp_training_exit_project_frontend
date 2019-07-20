@@ -31,4 +31,8 @@ export class EmployeeService {
     const params = {'username': username, 'password': password};
     return this.httpClient.post<Employee>(APIURL + 'login', '', {params});
   }
+
+  update(employee: Employee): Observable<Employee> {
+    return this.httpClient.put<Employee>(APIURL + 'employee', employee);
+  }
 }
