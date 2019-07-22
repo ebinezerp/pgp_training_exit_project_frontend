@@ -33,6 +33,7 @@ import {
 import {
   stringify
 } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -51,7 +52,8 @@ export class EditProfileComponent implements OnInit {
     private employeeService: EmployeeService,
     private profileService: ProfileService,
     private skillService: SkillService,
-    private formBuilder: FormBuilder) {}
+    private formBuilder: FormBuilder,
+    private router: Router) {}
 
   ngOnInit() {
     this.employee = this.employeeService.getEmployee();
@@ -133,7 +135,7 @@ export class EditProfileComponent implements OnInit {
     skill.id = 0;
     skill.skillName = value;
     this.skills.push(skill);
-    skillDetails.get('skill').get('skillName').value = value;
+    (skillDetails.get('skill').get('skillName') as FormControl).setValue(value);
   }
 
   logout() {
@@ -151,6 +153,7 @@ export class EditProfileComponent implements OnInit {
             this.profileService.setProfile(profile);
             console.log(profile);
             console.log(this.profile);
+            this.router.navigate(['/profile']);
           }
         );
       }

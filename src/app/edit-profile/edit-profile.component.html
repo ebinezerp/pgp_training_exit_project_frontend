@@ -39,7 +39,7 @@
             <div class="form-group">
               <label for="skill">Skill</label>
               <select *ngIf="skills.length!=0"  class="form-control" formControlName="skillName" name="" id="">
-                <option *ngFor="let skill of skills; let j = index" [value]="skills[j].id">
+                <option *ngFor="let skill of skills; let j = index" [value]="skills[j].skillName" [selected]="skills[j].skillName == skillDetailsList.controls[i].get('skill').get('skillName').value">
                   {{skills[j].skillName}}
                 </option>
                 <option value='other'>Other</option>

@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { HrModule } from './hr/hr.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HrModule
   ],
   providers: [],
   bootstrap: [AppComponent]
