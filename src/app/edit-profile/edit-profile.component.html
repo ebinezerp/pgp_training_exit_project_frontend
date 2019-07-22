@@ -1,0 +1,79 @@
+<form *ngIf="profileFormGroup" [formGroup]="profileFormGroup" (submit)='onSubmit()'>
+  <div class='form-group'>
+    <label for='firstname'>First name</label>
+    <input type="text" formControlName="firstname" class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='lastname'>Last name</label>
+    <input type="text" formControlName="lastname" class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='username'>Username</label>
+    <input type="text" formControlName="username" class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='email'>Email</label>
+    <input type="text" formControlName="email" class='form-control'>
+  </div>
+  <div class='form-group'>
+    <label for='mobile'>Mobile</label>
+    <input type="text" formControlName="mobile" class='form-control'>
+  </div>
+  <div formGroupName="profileGrp">
+    <div class='form-group'>
+      <label for='designation'>Designation</label>
+      <input type="text" formControlName="designation" class='form-control'>
+    </div>
+    <div class='form-group'>
+      <label for='experience'>Experience</label>
+      <input type="text" formControlName="experience" class='form-control'>
+    </div>
+    <div class='form-group'>
+      <label for='location'>Location</label>
+      <input type="text" formControlName="location" class='form-control'>
+    </div>
+    <div formArrayName="skillDetailsList">
+      <div *ngFor="let skillDetails of skillDetailsList.controls; let i=index ">
+        <div [formGroupName]="i">
+          <div formGroupName="skill">
+            <div class="form-group">
+              <label for="skill">Skill</label>
+              <select *ngIf="skills.length!=0"  class="form-control" formControlName="skillName" name="" id="">
+                <option *ngFor="let skill of skills; let j = index" [value]="skills[j].id">
+                  {{skills[j].skillName}}
+                </option>
+                <option value='other'>Other</option>
+              </select>
+              <input (blur)='addNewSkill(skillDetails,$event.target.value)' *ngIf="skills.length==0 || skillDetails.get('skill').get('skillName').value=='other'" type="text" class='form-control' formControlName="newSkillName" name="" placeholder="Enter Skill" id="{{i}}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="version">Version</label>
+            <input type="text" formControlName="version" name="version" id="version" class="form-control" placeholder=""
+              aria-describedby="helpId">
+            <small id="helpId" class="text-muted">Help text</small>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Experience</label>
+            <input type="text" formControlName="skillExperience" name="experience" id="experience" class="form-control"
+              placeholder="" aria-describedby="helpId">
+            <small id="helpId" class="text-muted">Help text</small>
+          </div>
+
+          <div class="form-group">
+            <label for="knowledgeLevel">Knowledge Level</label>
+            <input type="text" formControlName="knowledgeLevel" name="knowledgeLevel" id="knowledgeLevel"
+              class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class="text-muted">Help text</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type='button' class='btn btn-primary mb-5' (click)='addSkillDetails()'>Add Skill</button>
+    </div>
+  </div>
+  <input type='submit' class='btn btn-warning btn-block' value='Submit'>
+</form>

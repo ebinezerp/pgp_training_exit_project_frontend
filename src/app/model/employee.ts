@@ -1,3 +1,5 @@
+import { Profile } from './profile';
+
 export class Employee {
   id: number;
   firstname: string;
@@ -8,4 +10,5 @@ export class Employee {
   password: string;
   role: string;
   enabled: boolean;
+  profile: Profile;
 }

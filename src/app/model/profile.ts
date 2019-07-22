@@ -1,5 +1,6 @@
 import { Employee } from './employee';
 import { Skill } from './skill';
+import { SkillDetails } from './skill-details';
 
 export class Profile {
   id: number;
@@ -7,5 +8,5 @@ export class Profile {
   experience: number;
   location: string;
   employee: Employee;
-  skills: Skill[];
+  skillDetailsList: SkillDetails[] = [];
 }

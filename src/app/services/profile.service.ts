@@ -10,9 +10,19 @@ import { Profile } from '../model/profile';
 })
 export class ProfileService {
 
+  private profile: Profile;
+
   constructor(private httpClient: HttpClient) { }
 
-  getProfile(id: number): Observable<Profile> {
+  setProfile(profile: Profile): void {
+    this.profile = profile;
+  }
+
+  getProfile(): Profile {
+    return this.profile;
+  }
+
+  fetchProfile(id: number): Observable<Profile> {
     return this.httpClient.get<Profile>(APIURL + 'profile/' + id);
   }
 

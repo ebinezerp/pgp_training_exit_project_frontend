@@ -16,67 +16,63 @@
   </nav>
 </header>
 <section class='content container mt-5'>
-  <form *ngIf="profileFormGroup" [formGroup]="profileFormGroup" (submit)='onSubmit()'>
-    <div class='form-group'>
-      <label for='firstname'>First name</label>
-      <input type="text" formControlName="firstname" class='form-control'>
-    </div>
-    <div class='form-group'>
-      <label for='lastname'>Last name</label>
-      <input type="text" formControlName="lastname" class='form-control'>
-    </div>
-    <div class='form-group'>
-      <label for='username'>Username</label>
-      <input type="text" formControlName="username" class='form-control'>
-    </div>
-    <div class='form-group'>
-      <label for='email'>Email</label>
-      <input type="text" formControlName="email" class='form-control'>
-    </div>
-    <div class='form-group'>
-      <label for='mobile'>Mobile</label>
-      <input type="text" formControlName="mobile" class='form-control'>
-    </div>
-    <div formGroupName="profileGrp">
-      <div class='form-group'>
-        <label for='designation'>Designation</label>
-        <input type="text" formControlName="designation" class='form-control'>
+  <div class='col-md-5 col-sm-7 offset-md-3 offset-sm-2'>
+    <table class='table'>
+      <tr>
+        <td>First name</td>
+        <td>{{employee.firstname}}</td>
+      </tr>
+      <tr>
+        <td>Last name</td>
+        <td>{{employee.lastname}}</td>
+      </tr>
+      <tr>
+        <td>Username</td>
+        <td>{{employee.username}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{employee.email}}</td>
+      </tr>
+      <tr>
+        <td>Mobile</td>
+        <td>{{employee.mobile}}</td>
+      </tr>
+      <tr>
+        <td>Designation</td>
+        <td>{{profile.designation}}</td>
+      </tr>
+      <tr>
+        <td>Experience</td>
+        <td>{{profile.experience}}</td>
+      </tr>
+      <tr>
+        <td>Location</td>
+        <td>{{profile.location}}</td>
+      </tr>
+      <div *ngFor="let skillDetails of profile.skillDetailsList">
+        <tr>
+          <td>Skill Name</td>
+          <td>{{skillDetails.skill.skillName}}</td>
+        </tr>
+        <tr>
+          <td>Version</td>
+          <td>{{skillDetails.version}}</td>
+        </tr>
+        <tr>
+          <td>Experience in using</td>
+          <td>{{skillDetails.skillExperience}}</td>
+        </tr>
+        <tr>
+          <td>Knowledge Level</td>
+          <td>{{skillDetails.knowledgeLevel}}</td>
+        </tr>
       </div>
-      <div class='form-group'>
-        <label for='experience'>Experience</label>
-        <input type="text" formControlName="experience" class='form-control'>
-      </div>
-      <div class='form-group'>
-        <label for='location'>Location</label>
-        <input type="text" formControlName="location" class='form-control'>
-      </div>
-
-      <div formArrayName="skills">
-        <div *ngFor="let skillGroup of skills.controls; index as i">
-          <div formGroupName="{{i}}">
-            <div class='form-group'>
-              <label for='skillname'>Skill Name</label>
-              <input type="text" formControlName="skillName" class='form-control'>
-            </div>
-            <div class='form-group'>
-              <label for='version'>Version</label>
-              <input type="text" formControlName="version" class='form-control'>
-            </div>
-            <div class='form-group'>
-              <label for='skillExperience'>Experience in skill</label>
-              <input type="text" formControlName="skillExperience" class='form-control'>
-            </div>
-            <div class='form-group'>
-              <label for='skillKnowledge'>Knowledge level in skill</label>
-              <input type="text" formControlName="knowledgeLevel" class='form-control'>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <button type='button' class='btn btn-primary mb-5' (click)='addSkill()'>Add Skill</button>
-      </div>
-    </div>
-    <input type='submit' class='btn btn-warning btn-block' value='Submit'>
-  </form>
+      <tr>
+        <td colspan='2'>
+          <button [routerLink]="['/edit-profile']" routerLinkActive="router-link-active"  class='btn btn-block btn-primary'> Edit Profile </button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </section>
