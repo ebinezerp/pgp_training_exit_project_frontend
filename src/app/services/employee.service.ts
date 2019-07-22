@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from '../model/employee';
 import { APIURL } from '../util/constants';
+import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,10 @@ export class EmployeeService {
 
   update(employee: Employee): Observable<Employee> {
     return this.httpClient.put<Employee>(APIURL + 'employee', employee);
+  }
+
+  delete(employeeId: number): Observable<boolean> {
+    const params = {'id': stringify(employeeId)};
+    return this.httpClient.delete<boolean>(APIURL + '/delete', {params});
   }
 }

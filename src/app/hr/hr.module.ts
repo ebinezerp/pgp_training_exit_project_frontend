@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HrLoginComponent } from '../hr-login/hr-login.component';
 
+import { HrRoutingModule } from './hr-routing.module';
+import { EmployeeSearchComponent } from './employee-search/employee-search.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [HrLoginComponent],
+  declarations: [EmployeeSearchComponent],
   imports: [
     CommonModule,
+    HrRoutingModule,
     BrowserModule,
-    FormsModule
-  ],
-  exports: [
-    CommonModule,
-    BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HrModule { }

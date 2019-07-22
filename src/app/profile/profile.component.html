@@ -73,6 +73,13 @@
           <button [routerLink]="['/edit-profile']" routerLinkActive="router-link-active"  class='btn btn-block btn-primary'> Edit Profile </button>
         </td>
       </tr>
+      <tr>
+        <td colspan='2'>
+          <button (click)='delete()' class='btn btn-block btn-danger'>
+            Delete
+          </button>
+        </td>
+      </tr>
     </table>
   </div>
 </section>

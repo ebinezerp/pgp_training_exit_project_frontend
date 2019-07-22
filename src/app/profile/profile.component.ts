@@ -51,4 +51,18 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  delete() {
+    this.employeeService.delete(this.employee.id).subscribe(
+      (value) => {
+        if (value) {
+          this.router.navigate(['/']).then(
+            () => {
+               window.location.reload();
+            }
+          );
+        }
+      }
+    );
+  }
+
 }

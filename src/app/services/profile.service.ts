@@ -31,4 +31,10 @@ export class ProfileService {
     const params = {'id': employeeId };
     return this.httpClient.post<Profile>(APIURL + 'profile', profile, {params});
   }
+
+
+  search(location: string, skills: string[]): Observable<Profile[]> {
+    const params = {location, skills };
+    return this.httpClient.get<Profile[]>( APIURL + '/profile/search', {params});
+  }
 }
